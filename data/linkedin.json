@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Frontend Developer",
+    "company": "NovaApps",
+    "source": "LinkedIn",
+    "location": "Remote",
+    "url": "https://example.com/linkedin/frontend"
+  },
+  {
+    "title": "PHP Backend Engineer",
+    "company": "CloudMesh",
+    "source": "LinkedIn",
+    "location": "Bengaluru",
+    "url": "https://example.com/linkedin/php"
+  }
+]

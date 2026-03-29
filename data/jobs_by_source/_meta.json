@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-03-27T16:46:14.923241+00:00",
+  "search_term": "artist",
+  "location": "India",
+  "locations": [
+    "India"
+  ],
+  "sites": [
+    "indeed",
+    "linkedin"
+  ],
+  "skipped_sites": [
+    "naukri"
+  ],
+  "disabled_sites": [],
+  "site_fetch_counts": {
+    "indeed": 40
+  },
+  "site_error_counts": {},
+  "countries": [
+    "India"
+  ],
+  "results_wanted_per_batch": 40,
+  "batches": 1,
+  "fetched_this_run": 0,
+  "total_jobs": 1330,
+  "source_counts": {
+    "JobSpy:indeed": 674,
+    "JobSpy:linkedin": 656
+  }
+}

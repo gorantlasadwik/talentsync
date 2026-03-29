@@ -1,0 +1,677 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Instrument+Serif:ital@1&display=swap');
+
+:root {
+    --background: 213 45% 67%;
+    --foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 213 45% 67%;
+    --border: 0 0% 100% / 0.2;
+    --radius: 9999px;
+    --font-heading: 'Instrument Serif', serif;
+    --font-body: 'Barlow', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: var(--font-body);
+}
+
+.page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(700px 350px at 5% -10%, rgba(255, 255, 255, 0.08), transparent 55%),
+        radial-gradient(600px 350px at 95% 0%, rgba(110, 160, 255, 0.12), transparent 50%),
+        linear-gradient(180deg, #020202 0%, #000 45%, #020202 100%);
+}
+
+.page-container {
+    width: min(1200px, calc(100% - 2rem));
+    margin-inline: auto;
+}
+
+.top-pill {
+    border-radius: 9999px;
+    padding: 0.5rem;
+    display: inline-flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.ui-input,
+.ui-textarea,
+.ui-select,
+.ui-file {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #fff;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+}
+
+.ui-input,
+.ui-select,
+.ui-file {
+    border-radius: 9999px;
+    padding: 0.78rem 1rem;
+}
+
+.ui-file {
+    padding: 0.45rem 0.55rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.ui-file::file-selector-button {
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+    color: #fff;
+    border-radius: 9999px;
+    padding: 0.5rem 0.9rem;
+    margin-right: 0.7rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.ui-file::-webkit-file-upload-button {
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+    color: #fff;
+    border-radius: 9999px;
+    padding: 0.5rem 0.9rem;
+    margin-right: 0.7rem;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.ui-file:hover::file-selector-button,
+.ui-file:focus::file-selector-button,
+.ui-file:hover::-webkit-file-upload-button,
+.ui-file:focus::-webkit-file-upload-button {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ui-textarea {
+    border-radius: 1rem;
+    padding: 0.78rem 1rem;
+    resize: vertical;
+}
+
+.ui-input:focus,
+.ui-textarea:focus,
+.ui-select:focus,
+.ui-file:focus {
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
+}
+
+.muted {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.86rem;
+    font-weight: 300;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    text-align: left;
+    padding: 0.72rem 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.88rem;
+}
+
+.data-table thead th {
+    border-top: none;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+/* Keep native dropdowns readable and consistent on dark UI */
+select {
+    color-scheme: dark;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+select option {
+    background-color: #08090c;
+    color: #fff;
+}
+
+.heading-font {
+    font-family: var(--font-heading);
+    font-style: italic;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+}
+
+.body-font {
+    font-family: var(--font-body);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+.liquid-glass,
+.liquid-glass-strong {
+    position: relative;
+    overflow: hidden;
+    border-radius: inherit;
+    border: none;
+}
+
+.liquid-glass {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.liquid-glass-strong {
+    background: rgba(255, 255, 255, 0.01);
+    background-blend-mode: luminosity;
+    backdrop-filter: blur(50px);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.liquid-glass::before,
+.liquid-glass-strong::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.4px;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.45) 0%,
+        rgba(255, 255, 255, 0.15) 20%,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0) 60%,
+        rgba(255, 255, 255, 0.15) 80%,
+        rgba(255, 255, 255, 0.45) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.liquid-glass-strong::before {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.5) 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0) 40%,
+        rgba(255, 255, 255, 0) 60%,
+        rgba(255, 255, 255, 0.2) 80%,
+        rgba(255, 255, 255, 0.5) 100%
+    );
+}
+
+.section-badge {
+    display: inline-block;
+    border-radius: 9999px;
+    padding: 0.25rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.fade-top {
+    background: linear-gradient(to bottom, #000, transparent);
+}
+
+.fade-bottom {
+    background: linear-gradient(to top, #000, transparent);
+}
+
+.blur-word {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(50px);
+}
+
+.blur-word.in {
+    animation: blurIn 0.35s ease forwards;
+}
+
+@keyframes blurIn {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(50px);
+    }
+    60% {
+        opacity: 0.5;
+        filter: blur(5px);
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+.seeker-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #b8bdc7;
+    font-family: var(--font-body);
+    color: #0d0d0f;
+}
+
+.seeker-shell {
+    width: min(1240px, calc(100% - 2rem));
+    margin: 2.4rem auto;
+}
+
+.seeker-board {
+    border-radius: 22px;
+    overflow: hidden;
+    background: #f0f1f4;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.seeker-topbar {
+    background: #0c0c0f;
+    color: #fff;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 1rem 1.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.seeker-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.seeker-main-nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.seeker-main-nav a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-size: 0.88rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid transparent;
+}
+
+.seeker-main-nav a.active,
+.seeker-main-nav a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+.seeker-user-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.seeker-location {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.72);
+    margin-right: 0.6rem;
+}
+
+.seeker-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.seeker-icon-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    font-size: 0.84rem;
+}
+
+.seeker-filterbar {
+    background: #111214;
+    padding: 0.9rem 1.2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1.2fr;
+    gap: 0.7rem;
+    align-items: center;
+}
+
+.seeker-filter-cell {
+    min-height: 52px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.55rem 0.7rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.seeker-filter-cell input,
+.seeker-filter-cell select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-size: 0.86rem;
+}
+
+.seeker-filter-cell select option {
+    color: #fff;
+    background: #141518;
+}
+
+.seeker-filter-icon {
+    opacity: 0.8;
+}
+
+.seeker-salary-cell {
+    display: block;
+}
+
+.seeker-salary-cell label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.25rem;
+}
+
+.seeker-salary-cell input[type='range'] {
+    width: 100%;
+    accent-color: #6fd0ff;
+}
+
+.seeker-content {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    background: #f0f1f4;
+}
+
+.seeker-sidebar {
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1.2rem;
+}
+
+.seeker-promo-card {
+    background: #141414;
+    color: #fff;
+    border-radius: 16px;
+    padding: 1.2rem;
+    min-height: 175px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.seeker-promo-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+
+.seeker-promo-card a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #0d0d0f;
+    background: #7ad0ff;
+    border-radius: 9999px;
+    padding: 0.42rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.seeker-sidebar-panel {
+    margin-top: 1rem;
+}
+
+.seeker-sidebar-title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.seeker-filter-group h4 {
+    margin: 0.85rem 0 0.45rem;
+    font-size: 0.86rem;
+    color: #535760;
+    font-weight: 600;
+}
+
+.seeker-filter-group label {
+    display: block;
+    font-size: 0.84rem;
+    margin-bottom: 0.42rem;
+    color: #252932;
+}
+
+.seeker-jobs-area {
+    padding: 1.2rem;
+}
+
+.seeker-jobs-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.95rem;
+}
+
+.seeker-jobs-head h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111217;
+}
+
+.seeker-jobs-head h2 span {
+    font-size: 0.92rem;
+    background: #e5e7ec;
+    border-radius: 9999px;
+    padding: 0.27rem 0.58rem;
+    vertical-align: middle;
+    margin-left: 0.35rem;
+}
+
+.seeker-sort-wrap {
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #4d5260;
+}
+
+.seeker-sort-wrap select {
+    border: 1px solid #d9dce4;
+    border-radius: 8px;
+    padding: 0.35rem 0.45rem;
+    background: #fff;
+    color: #1e222b;
+}
+
+.seeker-jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.seeker-jobs-loading {
+    color: #555b66;
+    font-size: 0.92rem;
+}
+
+.seeker-job-card {
+    border-radius: 16px;
+    border: 1px solid #d8dbe2;
+    background: #fff;
+    padding: 0.75rem;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.seeker-job-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-chip,
+.save-chip {
+    font-size: 0.68rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.2rem 0.45rem;
+}
+
+.company-name {
+    margin: 0.55rem 0 0;
+    font-size: 0.74rem;
+    color: #5f636d;
+}
+
+.seeker-job-card h3 {
+    margin: 0.22rem 0;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: #11131a;
+}
+
+.job-source {
+    margin: 0;
+    font-size: 0.74rem;
+    color: #5e6470;
+}
+
+.tags-wrap {
+    margin-top: 0.7rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.tags-wrap span {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 9999px;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.66rem;
+    color: #303644;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.job-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.salary {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #10131b;
+}
+
+.location {
+    margin: 0.15rem 0 0;
+    font-size: 0.75rem;
+    color: #5f6571;
+}
+
+.detail-btn {
+    text-decoration: none;
+    color: #fff;
+    background: #0d0f15;
+    border-radius: 9999px;
+    padding: 0.36rem 0.75rem;
+    font-size: 0.73rem;
+    font-weight: 600;
+}
+
+.detail-btn.disabled {
+    background: #7f848d;
+}
+
+.tone-a { background: #f5e2d3; }
+.tone-b { background: #d7ede8; }
+.tone-c { background: #e7def5; }
+.tone-d { background: #d9ebf7; }
+.tone-e { background: #efdced; }
+.tone-f { background: #eceff4; }
+
+@media (max-width: 1100px) {
+    .seeker-filterbar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .seeker-content {
+        grid-template-columns: 1fr;
+    }
+
+    .seeker-sidebar {
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .seeker-jobs-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .seeker-topbar {
+        grid-template-columns: 1fr;
+    }
+
+    .seeker-main-nav {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .seeker-user-actions {
+        justify-content: flex-start;
+    }
+
+    .seeker-filterbar {
+        grid-template-columns: 1fr;
+    }
+
+    .seeker-jobs-grid {
+        grid-template-columns: 1fr;
+    }
+}
